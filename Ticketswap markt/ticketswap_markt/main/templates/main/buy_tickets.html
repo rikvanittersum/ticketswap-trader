@@ -1,0 +1,10 @@
+{% extends "main/header.html" %}
+    {%block content%}
+        {% for item in events%}
+        <div>
+            <a href="/?event={{item}}" >
+                {{item}}
+            </a>
+        </div>
+        {%endfor%}
+    {% endblock %}

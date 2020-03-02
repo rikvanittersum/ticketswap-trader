@@ -1,0 +1,23 @@
+{% extends "main/header.html" %}
+    {%block content%}
+
+        <h4>
+            Koop tickets voor: {{event}}
+        </h4><br><br><br><br>
+
+    <div class="container">
+        <form method="POST">
+        {% csrf_token %}
+            <label for="quantity">Aantal kaarten:</label>
+            <input type="hidden" id="event" name="event" value="{{event}}">
+            <input type="number" id="quantity" name="quantity" min="1" max="8">
+
+            <label for="price">Originele prijs:</label>
+            <input type="number" id="price" name="price" min="0"><br><br>
+            <button class="btn btn-outline-info" type="submit">Koop tickets</button>
+        </form>
+    </div>
+
+
+
+    {% endblock %}
