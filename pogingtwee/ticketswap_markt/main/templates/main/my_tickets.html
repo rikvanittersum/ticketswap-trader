@@ -1,0 +1,26 @@
+{% extends "main/header.html" %}
+    {%block content%}
+    <table>
+        <tr>
+            <th>Event</th>
+            <th>Aantal tickets</th>
+            <th>Koopprijs</th>
+            <th>Huidige gemiddelde verkoopprijs</th>
+            <th>Winst bij verkoop</th>
+        </tr>
+
+        {% for item in my_events%}
+            <tr>
+                <td>
+                    <a href="/?event={{item}}" >
+                        {{item}}
+                    </a>
+                </td>
+                <td>{{item.nr_of_tickets_bought}}</td>
+                <td>{{item.original_price}}</td>
+                <td>{{item.current_price}}</td>
+                <td>{{item.profit}}</td>
+            </tr>
+        {%endfor%}
+        </table>
+    {% endblock %}

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <title>Ticketswap Marktplaats</title>
+
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="{% static "main/css/materialize.css" %}">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" integrity="sha256-Uv9BNBucvCPipKQ2NS9wYpJmi8DTOEfTA/nH2aoJALw=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.css" integrity="sha256-aa0xaJgmK/X74WM224KMQeNQC2xYKwlAt08oZqjeF0E=" crossorigin="anonymous" />
+    
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+</head>
+<body>
+
+    <nav>
+        <div class="nav-wrapper">
+          <a href="/" class="brand-logo">Ticketswap Marktplaats</a>
+          <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+          <ul class="right hide-on-med-and-down">
+              <li><a href="/past_events">Afgelopen evenementen</a></li>
+            {% if user.is_authenticated %}
+            <li><a href="/my_tickets">Mijn tickets</a></li>
+            <li><a href="/buy_tickets">Koop tickets</a></li>
+            <li><a href="/logout">Uitloggen</a></li>
+            {% else %}
+              <li><a href="/buy_tickets">Komende evenementen</a></li>
+              <li><a href="/register">Registreren</a></li>
+              <li><a href="/login">Inloggen</a></li>
+            {% endif %}
+          </ul>
+        </div>
+      </nav>
+    
+      <ul class="sidenav" id="mobile-demo">
+        <li><a href="/register">Register</a></li>
+        <li><a href="/login">Log in</a></li>
+      </ul>
+
+      {% if messages%}
+        {%for message in messages %}
+          <script>M.toast({html:  "{{message}}", classes: 'blue rounded', displayLength:2000});</script>
+        {% endfor %}
+      {% endif %}
+
+      <div class="container">
+        <br>
+        {% block content %}
+        {% endblock %}
+      </div>
+
+</body>

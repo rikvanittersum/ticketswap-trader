@@ -1,0 +1,22 @@
+{% extends "main/header.html" %}
+    {%block content%}
+    <h4>{{event}}</h4>
+    <br><br>
+    <div>
+        De beste prijs die betaald werd voor tickets van dit evenement was op {{time_highest_price}} het hoogst. Het bedrag waartegen je kon verkopen was: {{price}} euro.
+    </div>
+    <br><br>
+    <div>
+        Het moment waarop de vraag/aanbod verhouding het hoogst was: {{time_highest_supply_demand_ratio}}.
+    </div>
+    <br><br>
+    <div>
+        Het moment waarop de vraag het snelst groeide was: {{highest_increase_in_demand}}.
+    </div>
+    <br><br>
+    <div>
+        Het moment waarop de meeste tickets werden verkocht was: {{most_sold_in_an_hour}}.
+    </div>
+    <br><br>
+    <button class="waves-effect waves-light btn-large" style="float: right;" onclick="window.location.href = '/?event={{event}}';">Bekijk de grafieken van dit afgelopen evenement</button>
+    {% endblock %}
