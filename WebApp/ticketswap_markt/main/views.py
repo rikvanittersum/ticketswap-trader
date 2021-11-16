@@ -5,8 +5,6 @@ from django.contrib.auth import login, logout, authenticate
 from django.contrib import messages
 from .top_documents import Top_documents
 
-
-# Create your views here.
 def homepage(request):
     event = request.GET.get("event")
     if not event:

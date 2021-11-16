@@ -7,10 +7,9 @@ import pytz
 
 class Events:
     def __init__(self):
-        self.client = pymongo.MongoClient("mongodb+srv://rik:Yanntiersen1970!@cluster0-ebw47.mongodb.net/test?retryWrites=true&w=majority")
+        self.client = pymongo.MongoClient("mongodb+srv://rik:Yanntiersen1970!@cluster1.rondo.mongodb.net/Lowlands_Festival_2020?retryWrites=true&w=majority")
         self.databases = self.client.list_database_names()
         self.databases = self.databases[:len(self.databases) - 2]
-
         self.most_wanted_event = {'name': None, 'wanted_tickets': 0}
         self.future_events = []
         self.passed_events = []
@@ -42,7 +41,7 @@ class Events:
         document = records.find_one(sort=[('_id', pymongo.DESCENDING)])
 
         tz = pytz.timezone('Europe/Berlin')
-        now = datetime.now(tz)
+        now = datetime(2020, 3,3)
         dt_string = now.strftime("%d/%m/%Y %H:%M")
 
         scrape_time_event = datetime.strptime(document.get("time"), "%d/%m/%Y %H:%M")
@@ -122,7 +121,7 @@ def query_events():
 
 def query_last_price_event(event):
     client = pymongo.MongoClient(
-        "mongodb+srv://rik:Yanntiersen1970!@cluster0-ebw47.mongodb.net/test?retryWrites=true&w=majority")
+        "mongodb+srv://rik:Yanntiersen1970!@cluster1.rondo.mongodb.net/Cluster1?retryWrites=true&w=majority")
     db = client.get_database(event)
     collections = db.list_collection_names()
     records = db[collections[0]]

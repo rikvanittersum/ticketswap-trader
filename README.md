@@ -1,2 +1,2 @@
-# eindproject
-eindproject Sogyo Academy. Een site waarop gescrapete data wordt weergeven
+# ticketswap trader
+project for trading ticketswap tickets
